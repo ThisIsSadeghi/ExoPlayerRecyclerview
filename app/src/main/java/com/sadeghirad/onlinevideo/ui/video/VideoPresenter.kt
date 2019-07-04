@@ -22,8 +22,7 @@ class VideoPresenter(val model: VideoMVP.Model) : VideoMVP.Presenter {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : MaybeObserver<Video> {
                 override fun onSuccess(t: Video) {
-                    Log.w("VideoPresenter", "onSuccess ")
-
+                    getView().loadData(t)
 
                 }
 

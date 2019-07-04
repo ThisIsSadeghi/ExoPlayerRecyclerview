@@ -13,6 +13,8 @@ interface VideoMVP {
 
     interface View : IBaseView {
         fun showNetworkError()
+
+        fun loadData(videos:Video)
     }
 
     interface Presenter : IBasePresenter {

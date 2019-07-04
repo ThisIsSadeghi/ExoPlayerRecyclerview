@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sadeghirad.onlinevideo.R
+import com.sadeghirad.onlinevideo.http.apimodel.Video
 import com.sadeghirad.onlinevideo.ui.base.BaseViewFragment
+import com.sadeghirad.onlinevideo.ui.video.adapter.VideosListAdapter
+import com.sadeghirad.onlinevideo.ui.video.adapter.VideosListPresenter
+import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
 
@@ -52,5 +57,11 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
     override fun onResume() {
         super.onResume()
         presenter.setView(this)
+    }
+
+    override fun loadData(videos: Video) {
+        val adapter = VideosListAdapter(VideosListPresenter(videos))
+        recyclerViewVideos.layoutManager = LinearLayoutManager(activity)
+        recyclerViewVideos.adapter = adapter
     }
 }
