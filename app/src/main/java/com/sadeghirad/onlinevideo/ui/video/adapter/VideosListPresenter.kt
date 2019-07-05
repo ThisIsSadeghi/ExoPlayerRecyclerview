@@ -8,6 +8,7 @@ class VideosListPresenter(private val videos:Video) : VideosListMVP.Presenter{
     override fun onBindVideoRow(holder: VideosListAdapter.VideosViewHolder, position: Int) {
         val currentClip = videos.clips!![position]
         holder.setThumbnailImage(currentClip.thumb!!)
+        holder.setVideoTitle(currentClip.title!!)
     }
 
     override fun getItemCount(): Int {

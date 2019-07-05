@@ -7,6 +7,8 @@ interface VideosListMVP {
 
     interface View {
         fun setThumbnailImage(url: String)
+
+        fun setVideoTitle(title: String)
     }
 
     interface Presenter {

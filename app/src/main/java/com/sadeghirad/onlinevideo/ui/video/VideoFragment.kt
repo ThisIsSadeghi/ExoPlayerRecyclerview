@@ -60,7 +60,7 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
     }
 
     override fun loadData(videos: Video) {
-        val adapter = VideosListAdapter(VideosListPresenter(videos))
+        val adapter = context?.let { VideosListAdapter(it, VideosListPresenter(videos)) }
         recyclerViewVideos.layoutManager = LinearLayoutManager(activity)
         recyclerViewVideos.adapter = adapter
     }

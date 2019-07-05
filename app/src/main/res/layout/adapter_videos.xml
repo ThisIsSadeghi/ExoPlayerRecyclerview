@@ -5,7 +5,17 @@
               android:layout_height="wrap_content">
 
     <ImageView android:layout_width="match_parent"
-               android:src="@mipmap/ic_launcher"
-               android:layout_height="wrap_content"/>
+               android:id="@+id/imgThumbnail"
+               android:layout_height="@dimen/adapter_videos_imageview_thumbnail_height"/>
+
+    <TextView android:layout_width="match_parent"
+              android:lines="1"
+              android:layout_marginTop="@dimen/adapter_videos_textview_title_margin_top"
+              android:layout_marginStart="@dimen/adapter_videos_textview_title_margin_start_end"
+              android:layout_marginEnd="@dimen/adapter_videos_textview_title_margin_start_end"
+              android:layout_marginBottom="@dimen/adapter_videos_textview_title_margin_start_bottom"
+              android:textStyle="bold"
+              android:id="@+id/txtTitle"
+              android:layout_height="wrap_content"/>
 
 </LinearLayout>
