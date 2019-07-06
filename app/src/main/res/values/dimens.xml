@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="adapter_videos_textview_title_margin_top">8dp</dimen>
-    <dimen name="adapter_videos_imageview_thumbnail_height">250dp</dimen>
+    <dimen name="adapter_videos_player_height">250dp</dimen>
     <dimen name="adapter_videos_textview_title_margin_start_end">8dp</dimen>
     <dimen name="adapter_videos_textview_title_margin_start_bottom">12dp</dimen>
 </resources>

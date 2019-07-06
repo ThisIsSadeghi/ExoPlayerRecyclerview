@@ -36,6 +36,14 @@ class VideosListAdapter(val context: Context, val presenter: VideosListPresenter
 
 
     inner class VideosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), VideosListMVP.View {
+
+        init {
+            itemView.imgThumbnail.setOnClickListener {
+                itemView.videoPlayer.player = presenter.getPlayer().getPlayerImpl(context)
+                presenter.handleItemViewClick(this, adapterPosition)
+            }
+        }
+
         override fun setVideoTitle(title: String) {
             itemView.txtTitle.text = title
         }
@@ -56,6 +64,14 @@ class VideosListAdapter(val context: Context, val presenter: VideosListPresenter
 
         }
 
+        override fun showThumbnailAndHideVideo() {
+            itemView.imgThumbnail.visibility = View.VISIBLE
+            itemView.videoPlayer.visibility = View.GONE
+        }
 
+        override fun showVideoAndHideThumbnail() {
+            itemView.imgThumbnail.visibility = View.GONE
+            itemView.videoPlayer.visibility = View.VISIBLE
+        }
     }
 }

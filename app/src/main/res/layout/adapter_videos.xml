@@ -4,10 +4,22 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-    <ImageView android:layout_width="match_parent"
-               android:id="@+id/imgThumbnail"
-               android:layout_height="@dimen/adapter_videos_imageview_thumbnail_height"/>
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="@dimen/adapter_videos_player_height">
 
+        <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/videoPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <ImageView android:layout_width="match_parent"
+                   android:id="@+id/imgThumbnail"
+                   android:layout_height="match_parent"/>
+
+
+
+
+    </FrameLayout>
     <TextView android:layout_width="match_parent"
               android:lines="1"
               android:layout_marginTop="@dimen/adapter_videos_textview_title_margin_top"
@@ -17,5 +29,4 @@
               android:textStyle="bold"
               android:id="@+id/txtTitle"
               android:layout_height="wrap_content"/>
-
 </LinearLayout>

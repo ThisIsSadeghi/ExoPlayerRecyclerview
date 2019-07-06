@@ -8,6 +8,11 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     kapt {
         generateStubs = true
     }
@@ -20,6 +25,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -63,4 +69,10 @@ dependencies {
     //Image loading
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //Video player
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.2'
+
+    //Multi dex
+    implementation 'com.android.support:multidex:1.0.3'
 }

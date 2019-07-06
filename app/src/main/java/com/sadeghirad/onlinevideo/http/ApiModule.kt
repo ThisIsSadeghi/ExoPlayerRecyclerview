@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Module
 class ApiModule {
 
-    var baseUrl = "https://api.myjson.com/"
+    val baseUrl = "https://api.myjson.com/"
 
     @Provides
     fun provideGSON(): Gson {

@@ -106,8 +106,6 @@ class MainActivity : BaseViewActivity(), MainMVP.View {
 
         fragmentTransaction.commit()
         currentFragment = meFragment
-
-
     }
 
 }
