@@ -6,7 +6,7 @@ import io.reactivex.Maybe
 
 
 
-class VideoRepository(val apiService: IApi) : IVideoRepository {
+class VideoRepository(private val apiService: IApi) : IVideoRepository {
     override fun getShortClips(): Maybe<Video> {
 
         return apiService.getShortClips()

@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="@dimen/adapter_videos_player_height">
 
-        <com.google.android.exoplayer2.ui.PlayerView
-                android:id="@+id/videoPlayer"
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:id="@+id/exoplayer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:gravity="center"/>
+
 
         <ImageView android:layout_width="match_parent"
                    android:id="@+id/imgThumbnail"
                    android:layout_height="match_parent"/>
 
 
+        <ProgressBar android:layout_width="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_height="wrap_content"
+                     style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large" android:id="@+id/prg"
+        />
 
 
     </FrameLayout>

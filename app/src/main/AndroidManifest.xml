@@ -24,6 +24,14 @@
 
         <activity android:name=".ui.base.BaseViewActivity">
         </activity>
+
+
+        <activity
+                android:name=".player.FullscreenVideoActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="@string/app_name"
+                android:theme="@style/FullscreenTheme" />
+
     </application>
 
 </manifest>

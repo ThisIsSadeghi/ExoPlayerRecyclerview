@@ -8,5 +8,4 @@ class Video {
     @SerializedName("clips")
     @Expose
     var clips: List<Clip>? = null
-
 }

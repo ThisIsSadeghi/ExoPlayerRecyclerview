@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sadeghirad.onlinevideo.R
-import com.sadeghirad.onlinevideo.http.apimodel.Video
+import com.sadeghirad.onlinevideo.constants.AppConstants
+import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
 import com.sadeghirad.onlinevideo.ui.base.BaseViewFragment
 import com.sadeghirad.onlinevideo.ui.video.adapter.VideosListAdapter
 import com.sadeghirad.onlinevideo.ui.video.adapter.VideosListPresenter
@@ -24,44 +26,81 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
     @Inject
     lateinit var presenter: VideoMVP.Presenter
 
+    private var adapterVideos: VideosListAdapter? = null
+    private var videosListPresenter: VideosListPresenter? = null
+
+    private var mView: View? = null
+
     companion object {
         fun getInstance(): VideoFragment {
             return VideoFragment()
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false)
+        if (mView == null)
+            mView = inflater.inflate(R.layout.fragment_video, container, false)
+
+        return mView
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         getApplicationComponent().inject(this)
+
+        presenter.setView(this)
+        presenter.getPageData()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+        videosListPresenter?.resumeCurrentVideoOnBackFromFullScreen()
+    }
 
+    override fun onStop() {
+        super.onStop()
+        if (!AppConstants.isNavigatingToFullScreen) {
+            videosListPresenter?.releaseAllPlayers()
+        }
     }
 
     override fun showNetworkError() {
         showLongSnackbar(getString(R.string.fail_try_again))
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.setView(this)
-    }
+    override fun loadData(videos: VideoDataModel?) {
+        val layoutManager = LinearLayoutManager(context)
+        if (recyclerViewVideos != null) {
+            if (adapterVideos == null && videos != null) {
+                videosListPresenter = VideosListPresenter(videos)
+                adapterVideos = context?.let { VideosListAdapter(it, videosListPresenter!!) }
+            } else if (adapterVideos != null && videos != null) {
+                videosListPresenter!!.setAdapterData(videos)
+            }
+            recyclerViewVideos.layoutManager = layoutManager
+            recyclerViewVideos.adapter = adapterVideos
 
-    override fun loadData(videos: Video) {
-        val adapter = context?.let { VideosListAdapter(it, VideosListPresenter(videos)) }
-        recyclerViewVideos.layoutManager = LinearLayoutManager(activity)
-        recyclerViewVideos.adapter = adapter
+        }
+
+        recyclerViewVideos.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+
+                videosListPresenter?.handlePauseCondition(
+                    dy,
+                    layoutManager.findFirstVisibleItemPosition(),
+                    layoutManager.findLastVisibleItemPosition()
+                )
+
+
+            }
+        })
+
     }
 }

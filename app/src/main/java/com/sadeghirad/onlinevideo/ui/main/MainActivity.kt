@@ -26,13 +26,12 @@ class MainActivity : BaseViewActivity(), MainMVP.View {
         setContentView(R.layout.activity_main)
 
         getApplicationComponent().inject(this)
-    }
 
-
-    override fun onResume() {
-        super.onResume()
         presenter.setView(this)
+
     }
+
+
 
     override fun setupViews() {
         bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
