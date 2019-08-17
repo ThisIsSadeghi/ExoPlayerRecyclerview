@@ -14,7 +14,7 @@ class VideosListPresenter(private var videos: VideoDataModel?) : VideosListMVP.P
     private lateinit var currentHolder: VideosListAdapter.VideosViewHolder
     private var currentPosition = 0
     private var currentFirstVisibleItemPosition = 0
-    private var currentLastVisibleItemPosition = videos?.clips?.size?.minus(1)
+    private var currentLastVisibleItemPosition = 0
 
     override fun setView(holder: VideosListAdapter.VideosViewHolder) {
 //        this.holder = holder
@@ -145,8 +145,13 @@ class VideosListPresenter(private var videos: VideoDataModel?) : VideosListMVP.P
             if (firstVisiblePosition != currentFirstVisibleItemPosition) {
                 pauseOutOfScreenVideo(currentFirstVisibleItemPosition)
             }
+        } else {
+            if (lastVisiblePosition != currentLastVisibleItemPosition){
+                pauseOutOfScreenVideo(currentLastVisibleItemPosition)
+            }
         }
         currentFirstVisibleItemPosition = firstVisiblePosition
+        currentLastVisibleItemPosition = lastVisiblePosition
     }
 
     override fun pauseOutOfScreenVideo(position: Int) {
