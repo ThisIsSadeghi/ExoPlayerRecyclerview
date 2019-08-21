@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.sadeghirad.onlinevideo.R
 import com.sadeghirad.onlinevideo.ui.base.BaseViewActivity
-import com.sadeghirad.onlinevideo.ui.gif.GifFragment
-import com.sadeghirad.onlinevideo.ui.me.MeFragment
-import com.sadeghirad.onlinevideo.ui.video.VideoFragment
+import com.sadeghirad.onlinevideo.ui.main.navigationpages.gif.GifFragment
+import com.sadeghirad.onlinevideo.ui.main.navigationpages.me.MeFragment
+import com.sadeghirad.onlinevideo.ui.main.navigationpages.video.VideoFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 

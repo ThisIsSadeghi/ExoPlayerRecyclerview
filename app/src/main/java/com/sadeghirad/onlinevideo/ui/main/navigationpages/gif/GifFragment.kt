@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.me
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.gif
 
 
 import android.os.Bundle
@@ -9,14 +9,14 @@ import com.sadeghirad.onlinevideo.R
 import com.sadeghirad.onlinevideo.ui.base.BaseViewFragment
 import javax.inject.Inject
 
-class MeFragment : BaseViewFragment(), MeMVP.View {
+class GifFragment : BaseViewFragment(), GifMVP.View {
 
     @Inject
-    lateinit var presenter: MeMVP.Presenter
+    lateinit var presenter: GifMVP.Presenter
 
     companion object {
-        fun getInstance(): MeFragment {
-            return MeFragment()
+        fun getInstance(): GifFragment {
+            return GifFragment()
         }
     }
 
@@ -26,7 +26,7 @@ class MeFragment : BaseViewFragment(), MeMVP.View {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_me, container, false)
+        return inflater.inflate(R.layout.fragment_gif, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

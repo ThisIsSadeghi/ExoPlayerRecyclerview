@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video
 
 import com.sadeghirad.onlinevideo.http.apimodel.Video
 import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel

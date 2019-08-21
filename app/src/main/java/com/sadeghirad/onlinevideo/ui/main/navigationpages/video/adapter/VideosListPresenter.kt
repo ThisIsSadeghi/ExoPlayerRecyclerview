@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video.adapter
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter
 
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
@@ -8,7 +8,8 @@ import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
 import com.sadeghirad.onlinevideo.player.ExoPlayerViewManager
 
 
-class VideosListPresenter(private var videos: VideoDataModel?) : VideosListMVP.Presenter {
+class VideosListPresenter(private var videos: VideoDataModel?) :
+    VideosListMVP.Presenter {
 
     private lateinit var currentClip: ClipModel
     private lateinit var currentHolder: VideosListAdapter.VideosViewHolder

@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video
 
 
 import android.os.Bundle
@@ -12,8 +12,8 @@ import com.sadeghirad.onlinevideo.R
 import com.sadeghirad.onlinevideo.constants.AppConstants
 import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
 import com.sadeghirad.onlinevideo.ui.base.BaseViewFragment
-import com.sadeghirad.onlinevideo.ui.video.adapter.VideosListAdapter
-import com.sadeghirad.onlinevideo.ui.video.adapter.VideosListPresenter
+import com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter.VideosListAdapter
+import com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter.VideosListPresenter
 import kotlinx.android.synthetic.main.fragment_video.*
 import javax.inject.Inject
 
@@ -76,8 +76,14 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
         val layoutManager = LinearLayoutManager(context)
         if (recyclerViewVideos != null) {
             if (adapterVideos == null && videos != null) {
-                videosListPresenter = VideosListPresenter(videos)
-                adapterVideos = context?.let { VideosListAdapter(it, videosListPresenter!!) }
+                videosListPresenter =
+                    VideosListPresenter(videos)
+                adapterVideos = context?.let {
+                    VideosListAdapter(
+                        it,
+                        videosListPresenter!!
+                    )
+                }
             } else if (adapterVideos != null && videos != null) {
                 videosListPresenter!!.setAdapterData(videos)
             }

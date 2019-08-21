@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video.adapter
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter
 
 import com.sadeghirad.onlinevideo.http.apimodel.customized.ClipModel
 import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel

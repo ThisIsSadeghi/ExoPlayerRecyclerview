@@ -1,9 +1,9 @@
-package com.sadeghirad.onlinevideo.ui.gif
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.me
 
 import com.sadeghirad.onlinevideo.ui.base.IBasePresenter
 import com.sadeghirad.onlinevideo.ui.base.IBaseView
 
-interface GifMVP {
+interface MeMVP {
 
     interface Model {
 

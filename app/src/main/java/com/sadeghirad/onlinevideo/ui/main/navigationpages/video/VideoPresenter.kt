@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -12,7 +12,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
-class VideoPresenter(val model: VideoMVP.Model) : VideoMVP.Presenter {
+class VideoPresenter(val model: VideoMVP.Model) :
+    VideoMVP.Presenter {
 
 
     lateinit var mView: VideoMVP.View

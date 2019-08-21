@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.me
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.me
 
 import com.sadeghirad.onlinevideo.ui.base.IBaseView
 
@@ -9,7 +9,7 @@ class MePresenter : MeMVP.Presenter {
         mView = view as MeMVP.View
     }
 
-    fun getView():MeMVP.View{
+    fun getView(): MeMVP.View {
         return mView
     }
 }

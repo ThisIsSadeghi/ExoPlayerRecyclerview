@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video.adapter
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -16,7 +16,7 @@ import com.sadeghirad.onlinevideo.constants.AppConstants
 import com.sadeghirad.onlinevideo.constants.URLs
 import com.sadeghirad.onlinevideo.http.apimodel.customized.ClipModel
 import com.sadeghirad.onlinevideo.player.ExoPlayerViewManager
-import com.sadeghirad.onlinevideo.player.FullscreenVideoActivity
+import com.sadeghirad.onlinevideo.ui.fullscreen.FullscreenVideoActivity
 import kotlinx.android.synthetic.main.adapter_videos.view.*
 import kotlinx.android.synthetic.main.exo_playback_control_view.view.*
 import kotlinx.android.synthetic.main.exo_simple_player_view.view.*
@@ -41,7 +41,8 @@ class VideosListAdapter(val context: Context, val presenter: VideosListPresenter
         presenter.onBindVideoRow(holder, position)
     }
 
-    inner class VideosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), VideosListMVP.View {
+    inner class VideosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        VideosListMVP.View {
 
         init {
             itemView.imgThumbnail.setOnClickListener {

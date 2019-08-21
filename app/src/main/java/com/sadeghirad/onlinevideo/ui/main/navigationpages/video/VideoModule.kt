@@ -1,4 +1,4 @@
-package com.sadeghirad.onlinevideo.ui.video
+package com.sadeghirad.onlinevideo.ui.main.navigationpages.video
 
 import com.sadeghirad.onlinevideo.http.ApiModule
 import com.sadeghirad.onlinevideo.http.IApi
