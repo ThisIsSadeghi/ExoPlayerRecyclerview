@@ -1,7 +1,6 @@
 package com.sadeghirad.onlinevideo.ui.main.navigationpages.video
 
 import com.sadeghirad.onlinevideo.http.apimodel.Video
-import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
 import com.sadeghirad.onlinevideo.ui.base.IBasePresenter
 import com.sadeghirad.onlinevideo.ui.base.IBaseView
 import io.reactivex.Maybe
@@ -15,7 +14,7 @@ interface VideoMVP {
     interface View : IBaseView {
         fun showNetworkError()
 
-        fun loadData(videos:VideoDataModel?)
+        fun loadData(videos:Video)
     }
 
     interface Presenter : IBasePresenter {

@@ -14,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.sadeghirad.onlinevideo.R
 import com.sadeghirad.onlinevideo.constants.AppConstants
 import com.sadeghirad.onlinevideo.constants.URLs
-import com.sadeghirad.onlinevideo.http.apimodel.customized.ClipModel
+import com.sadeghirad.onlinevideo.http.apimodel.Clip
 import com.sadeghirad.onlinevideo.player.ExoPlayerViewManager
 import com.sadeghirad.onlinevideo.ui.fullscreen.FullscreenVideoActivity
 import kotlinx.android.synthetic.main.adapter_videos.view.*
@@ -104,8 +104,8 @@ class VideosListAdapter(val context: Context, val presenter: VideosListPresenter
             context.startActivity(intent)
         }
 
-        override fun makeVideoPlayerInstance(clip: ClipModel) {
-            ExoPlayerViewManager.getInstance(context, this.itemView.exoplayer, clip.clip?.source)
+        override fun makeVideoPlayerInstance(clip: Clip) {
+            ExoPlayerViewManager.getInstance(context, this.itemView.exoplayer, clip.source)
         }
 
         override fun adapterNotifyDataSetChanged() {

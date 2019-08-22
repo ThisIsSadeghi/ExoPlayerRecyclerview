@@ -3,15 +3,15 @@ package com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
-import com.sadeghirad.onlinevideo.http.apimodel.customized.ClipModel
-import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
+import com.sadeghirad.onlinevideo.http.apimodel.Clip
+import com.sadeghirad.onlinevideo.http.apimodel.Video
 import com.sadeghirad.onlinevideo.player.ExoPlayerViewManager
 
 
-class VideosListPresenter(private var videos: VideoDataModel?) :
+class VideosListPresenter(private var videos: Video?) :
     VideosListMVP.Presenter {
 
-    private lateinit var currentClip: ClipModel
+    private lateinit var currentClip: Clip
     private lateinit var currentHolder: VideosListAdapter.VideosViewHolder
     private var currentPosition = 0
     private var currentFirstVisibleItemPosition = 0
@@ -39,16 +39,16 @@ class VideosListPresenter(private var videos: VideoDataModel?) :
 
         if (url != null) {
             setCurrentHolderAndClip(clip, holder)
-            holder.showFullScreenActivity(clip.clip?.source!!)
+            holder.showFullScreenActivity(clip.source!!)
         }
     }
 
     override fun deactivate() {
     }
 
-    override fun play(holder: VideosListAdapter.VideosViewHolder, clip: ClipModel, position: Int) {
+    override fun play(holder: VideosListAdapter.VideosViewHolder, clip: Clip, position: Int) {
 
-        val instance = ExoPlayerViewManager.getInstance(clip.clip?.source!!)
+        val instance = ExoPlayerViewManager.getInstance(clip.source!!)
         instance?.play((object : Player.EventListener {
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
                 when (playbackState) {
@@ -92,8 +92,8 @@ class VideosListPresenter(private var videos: VideoDataModel?) :
 
     override fun onBindVideoRow(holder: VideosListAdapter.VideosViewHolder, position: Int) {
         val currentClip = getClipModelByPosition(position)
-        holder.setThumbnailImage(currentClip.clip?.thumb!!)
-        holder.setVideoTitle(currentClip.clip?.title!!)
+        holder.setThumbnailImage(currentClip.thumb!!)
+        holder.setVideoTitle(currentClip.title!!)
 
 
         if (currentClip.showVideoAndHideThumbnail)
@@ -112,14 +112,11 @@ class VideosListPresenter(private var videos: VideoDataModel?) :
         return videos?.clips!!.size
     }
 
-    override fun setAdapterData(videos: VideoDataModel?) {
+    override fun setAdapterData(videos: Video?) {
         this.videos = videos!!
     }
 
-    override fun tellVideoManagerThatThereIsANewVideoHaHa() {
-    }
-
-    override fun setClip(clipModel: ClipModel) {
+    override fun setClip(clipModel: Clip) {
         currentClip = clipModel
     }
 
@@ -127,17 +124,17 @@ class VideosListPresenter(private var videos: VideoDataModel?) :
         currentHolder = holder
     }
 
-    override fun setCurrentHolderAndClip(clipModel: ClipModel, holder: VideosListAdapter.VideosViewHolder) {
+    override fun setCurrentHolderAndClip(clipModel: Clip, holder: VideosListAdapter.VideosViewHolder) {
         setClip(clipModel)
         setHolder(holder)
     }
 
-    override fun getClipModelByPosition(position: Int): ClipModel {
-        return videos?.clips!![position]
+    override fun getClipModelByPosition(position: Int): Clip {
+        return videos?.clips?.get(position)!!
     }
 
     override fun getVideoUrlByPosition(position: Int): String? {
-        return getClipModelByPosition(position).clip?.source
+        return getClipModelByPosition(position).source
     }
 
     override fun handlePauseCondition(dy: Int, firstVisiblePosition: Int, lastVisiblePosition: Int) {

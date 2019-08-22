@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sadeghirad.onlinevideo.R
 import com.sadeghirad.onlinevideo.constants.AppConstants
-import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
+import com.sadeghirad.onlinevideo.http.apimodel.Video
 import com.sadeghirad.onlinevideo.ui.base.BaseViewFragment
 import com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter.VideosListAdapter
 import com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter.VideosListPresenter
@@ -72,7 +72,7 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
         showLongSnackbar(getString(R.string.fail_try_again))
     }
 
-    override fun loadData(videos: VideoDataModel?) {
+    override fun loadData(videos: Video) {
         val layoutManager = LinearLayoutManager(context)
         if (recyclerViewVideos != null) {
             if (adapterVideos == null && videos != null) {

@@ -15,4 +15,6 @@ class Clip {
     @Expose
     var title: String? = null
 
+    var showVideoAndHideThumbnail:Boolean = false
+    var showLoading:Boolean = false
 }

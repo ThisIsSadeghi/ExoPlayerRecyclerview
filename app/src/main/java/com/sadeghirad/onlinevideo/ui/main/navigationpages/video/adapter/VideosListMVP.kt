@@ -1,7 +1,7 @@
 package com.sadeghirad.onlinevideo.ui.main.navigationpages.video.adapter
 
-import com.sadeghirad.onlinevideo.http.apimodel.customized.ClipModel
-import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
+import com.sadeghirad.onlinevideo.http.apimodel.Clip
+import com.sadeghirad.onlinevideo.http.apimodel.Video
 
 interface VideosListMVP {
 
@@ -18,7 +18,7 @@ interface VideosListMVP {
 
         fun showFullScreenActivity(url: String)
 
-        fun makeVideoPlayerInstance(clip: ClipModel)
+        fun makeVideoPlayerInstance(clip: Clip)
 
         fun showLoading()
 
@@ -37,7 +37,7 @@ interface VideosListMVP {
 
         fun deactivate()
 
-        fun play(holder: VideosListAdapter.VideosViewHolder, clip: ClipModel, position: Int)
+        fun play(holder: VideosListAdapter.VideosViewHolder, clip: Clip, position: Int)
 
         fun releaseAllPlayers()
 
@@ -47,25 +47,19 @@ interface VideosListMVP {
 
         fun handlePlayerFullScreenClick(holder: VideosListAdapter.VideosViewHolder, position: Int)
 
-        fun setAdapterData(videos: VideoDataModel?)
+        fun setAdapterData(videos: Video?)
 
         fun resumeCurrentVideoOnBackFromFullScreen()
 
-        fun tellVideoManagerThatThereIsANewVideoHaHa()
-
-        fun setClip(clipModel: ClipModel)
+        fun setClip(clipModel: Clip)
 
         fun setHolder(holder: VideosListAdapter.VideosViewHolder)
 
-        fun setCurrentHolderAndClip(clipModel: ClipModel, holder: VideosListAdapter.VideosViewHolder)
+        fun setCurrentHolderAndClip(clipModel: Clip, holder: VideosListAdapter.VideosViewHolder)
 
-        fun getClipModelByPosition(position: Int): ClipModel
+        fun getClipModelByPosition(position: Int): Clip
 
         fun getVideoUrlByPosition(position: Int): String?
-
-/*        fun getPlayerManagerInstance(): ExoPlayerViewManager?
-
-        fun setPlayerManagerInstance(instance: ExoPlayerViewManager?)*/
 
         fun handlePauseCondition(dy: Int, firstVisiblePosition: Int, lastVisiblePosition: Int)
 

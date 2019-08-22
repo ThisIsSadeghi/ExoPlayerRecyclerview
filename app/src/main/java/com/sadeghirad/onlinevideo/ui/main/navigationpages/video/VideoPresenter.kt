@@ -3,8 +3,6 @@ package com.sadeghirad.onlinevideo.ui.main.navigationpages.video
 import android.annotation.SuppressLint
 import android.util.Log
 import com.sadeghirad.onlinevideo.http.apimodel.Video
-import com.sadeghirad.onlinevideo.http.apimodel.customized.ClipModel
-import com.sadeghirad.onlinevideo.http.apimodel.customized.VideoDataModel
 import com.sadeghirad.onlinevideo.ui.base.IBaseView
 import io.reactivex.MaybeObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -35,14 +33,14 @@ class VideoPresenter(val model: VideoMVP.Model) :
             .subscribe(object : MaybeObserver<Video> {
                 override fun onSuccess(t: Video) {
 
-                    val videoDataModel = VideoDataModel()
+/*                    val videoDataModel = VideoDataModel()
                     videoDataModel.clips = ArrayList()
                     for (clip in t.clips!!){
                         val clipModel = ClipModel()
                         clipModel.clip = clip
                         videoDataModel.clips!!.add(clipModel)
-                    }
-                    getView().loadData(videoDataModel)
+                    }*/
+                    getView().loadData(t)
 
                 }
 
