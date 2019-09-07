@@ -1,6 +1,6 @@
 
 # ExoPlayerRecyclerview
-This is a sample for implementing ExoPlayer + Recyclerview
+This is a sample for implementing ExoPlayer + Recyclerview in Kotlin
 ## What do we have in this project?
  - ExoPlayer
  - MVP architecture
