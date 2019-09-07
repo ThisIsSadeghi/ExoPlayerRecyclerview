@@ -9,6 +9,7 @@ This is a sample for implementing ExoPlayer + Recyclerview in Kotlin
  - Retrofit
  - Glide
  - Recyclerview
+ - Bottom navigation
 ## What will we have in this project soon?
  - Unit tests
  - Improve UI
