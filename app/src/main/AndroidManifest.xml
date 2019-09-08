@@ -13,25 +13,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-
-        <activity android:name=".ui.base.BaseViewActivity" />
-
-
         <activity
-            android:name=".ui.fullscreen.FullscreenVideoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape"
-            android:theme="@style/FullscreenTheme" />
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-    </application>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
 
-</manifest>
+
+    <activity android:name=".ui.base.BaseViewActivity" />
+
+
+    <activity
+        android:name=".ui.fullscreen.FullscreenVideoActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:label="@string/app_name"
+        android:screenOrientation="landscape"
+        android:theme="@style/FullscreenTheme" />
+
+</application>
+
+    </manifest>
