@@ -1,4 +1,4 @@
-
+![Screenshots](https://img.techpowerup.org/190908/mock.png)
 # ExoPlayerRecyclerview
 This is a sample for implementing ExoPlayer + Recyclerview in Kotlin
 ## What do we have in this project?
@@ -18,3 +18,5 @@ This is a sample for implementing ExoPlayer + Recyclerview in Kotlin
 
 
 Enjoy coding and feel free to report any issue.
+
+Contact: [Telegram](https://t.me/ThisIsSadeghi) & [Email](mailto:alisadeghi.dev@gmail.com)
