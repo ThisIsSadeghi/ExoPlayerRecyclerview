@@ -58,10 +58,12 @@ class ExoPlayerViewManager private constructor(
     }
 
     fun setPlayerProperties() {
-        player!!.clearVideoSurface()
-        player!!.setVideoSurfaceView(exoPlayerView!!.videoSurfaceView as SurfaceView)
-        player!!.seekTo(player!!.currentPosition + 1)
-        exoPlayerView!!.player = player
+        if (player != null) {
+            player!!.clearVideoSurface()
+            player!!.setVideoSurfaceView(exoPlayerView!!.videoSurfaceView as SurfaceView)
+            player!!.seekTo(player!!.currentPosition + 1)
+            exoPlayerView!!.player = player
+        }
     }
 
     fun releaseVideoPlayer() {
@@ -69,19 +71,6 @@ class ExoPlayerViewManager private constructor(
             player!!.release()
         }
         player = null
-    }
-
-    fun goToBackground() {
-        if (player != null) {
-            isPlayerPlaying = player!!.playWhenReady
-            player!!.playWhenReady = false
-        }
-    }
-
-    fun goToForeground() {
-        if (player != null) {
-            player!!.playWhenReady = isPlayerPlaying
-        }
     }
 
     fun isPlaying(): Boolean {

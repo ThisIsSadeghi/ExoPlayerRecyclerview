@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sadeghirad.onlinevideo.R
+import com.sadeghirad.onlinevideo.constants.AppConstants
 import com.sadeghirad.onlinevideo.ui.base.BaseViewFragment
 import javax.inject.Inject
 
@@ -38,6 +39,7 @@ class MeFragment : BaseViewFragment(), MeMVP.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AppConstants.isNavigatingBetweenFragments = false
     }
 
     override fun onResume() {

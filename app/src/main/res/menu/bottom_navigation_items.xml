@@ -5,21 +5,21 @@
     <item
             android:id="@+id/bottom_navigation_video"
             android:enabled="true"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@drawable/ic_menu_video"
             android:title="@string/video"
             app:showAsAction="always|withText"/>
 
     <item
             android:id="@+id/bottom_navigation_gif"
             android:enabled="true"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@drawable/ic_menu_gif"
             android:title="@string/gif"
             app:showAsAction="always|withText" />
 
     <item
             android:id="@+id/bottom_navigation_me"
             android:enabled="true"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@drawable/ic_menu_me"
             android:title="@string/me"
             app:showAsAction="always|withText"/>
 </menu>

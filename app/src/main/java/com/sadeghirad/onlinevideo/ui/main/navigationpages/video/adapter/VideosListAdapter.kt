@@ -107,9 +107,5 @@ class VideosListAdapter(val context: Context, val presenter: VideosListPresenter
         override fun makeVideoPlayerInstance(clip: Clip) {
             ExoPlayerViewManager.getInstance(context, this.itemView.exoplayer, clip.source)
         }
-
-        override fun adapterNotifyDataSetChanged() {
-            notifyDataSetChanged()
-        }
     }
 }

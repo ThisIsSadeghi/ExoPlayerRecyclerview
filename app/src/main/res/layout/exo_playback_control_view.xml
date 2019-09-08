@@ -92,12 +92,12 @@
 
          <ImageView
                  android:id="@+id/exo_fullscreen_icon"
-                 android:layout_width="40dp"
-                 android:layout_height="40dp"
+                 android:layout_width="24dp"
+                 android:layout_height="24dp"
                  android:layout_gravity="center"
                  android:adjustViewBounds="true"
                  android:scaleType="fitCenter"
-                 app:srcCompat="@drawable/ic_fullscreen_skrink" />
+                 app:srcCompat="@drawable/ic_fullscreen_expand" />
 
       </FrameLayout>
 

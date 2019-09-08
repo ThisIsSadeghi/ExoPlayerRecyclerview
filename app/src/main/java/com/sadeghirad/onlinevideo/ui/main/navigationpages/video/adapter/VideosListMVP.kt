@@ -23,9 +23,6 @@ interface VideosListMVP {
         fun showLoading()
 
         fun hideLoading()
-
-        fun adapterNotifyDataSetChanged()
-
     }
 
     interface Presenter {
@@ -41,7 +38,7 @@ interface VideosListMVP {
 
         fun releaseAllPlayers()
 
-        fun setMediaSessionState(isActive: Boolean)
+        fun pauseAllPlayers()
 
         fun handleItemViewClick(holder: VideosListAdapter.VideosViewHolder, position: Int)
 

@@ -32,7 +32,10 @@ class VideosListPresenter(private var videos: Video?) :
         }
     }
 
-    override fun handlePlayerFullScreenClick(holder: VideosListAdapter.VideosViewHolder, position: Int) {
+    override fun handlePlayerFullScreenClick(
+        holder: VideosListAdapter.VideosViewHolder,
+        position: Int
+    ) {
         val url = getVideoUrlByPosition(position)
         val clip = getClipModelByPosition(position)
         currentPosition = position
@@ -77,7 +80,8 @@ class VideosListPresenter(private var videos: Video?) :
     }
 
     override fun resumeCurrentVideoOnBackFromFullScreen() {
-        currentHolder.makeVideoPlayerInstance(currentClip)
+        if (::currentHolder.isInitialized && ::currentClip.isInitialized)
+            currentHolder.makeVideoPlayerInstance(currentClip)
     }
 
     override fun releaseAllPlayers() {
@@ -86,9 +90,12 @@ class VideosListPresenter(private var videos: Video?) :
             instances[url]?.releaseVideoPlayer()
     }
 
-    override fun setMediaSessionState(isActive: Boolean) {
-//        mediaPlayer.setMediaSessionState(isActive)
+    override fun pauseAllPlayers() {
+        val instances = ExoPlayerViewManager.instances
+        for (url in instances.keys)
+            instances[url]?.pausePlayer()
     }
+
 
     override fun onBindVideoRow(holder: VideosListAdapter.VideosViewHolder, position: Int) {
         val currentClip = getClipModelByPosition(position)
@@ -124,7 +131,10 @@ class VideosListPresenter(private var videos: Video?) :
         currentHolder = holder
     }
 
-    override fun setCurrentHolderAndClip(clipModel: Clip, holder: VideosListAdapter.VideosViewHolder) {
+    override fun setCurrentHolderAndClip(
+        clipModel: Clip,
+        holder: VideosListAdapter.VideosViewHolder
+    ) {
         setClip(clipModel)
         setHolder(holder)
     }
@@ -137,14 +147,18 @@ class VideosListPresenter(private var videos: Video?) :
         return getClipModelByPosition(position).source
     }
 
-    override fun handlePauseCondition(dy: Int, firstVisiblePosition: Int, lastVisiblePosition: Int) {
+    override fun handlePauseCondition(
+        dy: Int,
+        firstVisiblePosition: Int,
+        lastVisiblePosition: Int
+    ) {
         val isScrollingUp = dy > 0
         if (isScrollingUp) {
             if (firstVisiblePosition != currentFirstVisibleItemPosition) {
                 pauseOutOfScreenVideo(currentFirstVisibleItemPosition)
             }
         } else {
-            if (lastVisiblePosition != currentLastVisibleItemPosition){
+            if (lastVisiblePosition != currentLastVisibleItemPosition) {
                 pauseOutOfScreenVideo(currentLastVisibleItemPosition)
             }
         }

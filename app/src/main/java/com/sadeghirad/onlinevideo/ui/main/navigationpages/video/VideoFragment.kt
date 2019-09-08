@@ -23,11 +23,13 @@ import javax.inject.Inject
  *
  */
 class VideoFragment : BaseViewFragment(), VideoMVP.View {
+
     @Inject
     lateinit var presenter: VideoMVP.Presenter
 
     private var adapterVideos: VideosListAdapter? = null
     private var videosListPresenter: VideosListPresenter? = null
+    private var pageData:Video? = null
 
     private var mView: View? = null
 
@@ -53,9 +55,17 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
         getApplicationComponent().inject(this)
 
         presenter.setView(this)
-        presenter.getPageData()
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (pageData == null)
+            presenter.getPageData()
+
+        AppConstants.isNavigatingBetweenFragments = false
+    }
     override fun onResume() {
         super.onResume()
         videosListPresenter?.resumeCurrentVideoOnBackFromFullScreen()
@@ -63,8 +73,12 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
 
     override fun onStop() {
         super.onStop()
-        if (!AppConstants.isNavigatingToFullScreen) {
+        if (!AppConstants.isNavigatingToFullScreen && !AppConstants.isNavigatingBetweenFragments) {
             videosListPresenter?.releaseAllPlayers()
+        }
+
+        if (AppConstants.isNavigatingBetweenFragments){
+            videosListPresenter?.pauseAllPlayers()
         }
     }
 
@@ -72,7 +86,9 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
         showLongSnackbar(getString(R.string.fail_try_again))
     }
 
-    override fun loadData(videos: Video) {
+    override fun showData(videos: Video) {
+        pageData = videos
+
         val layoutManager = LinearLayoutManager(context)
         if (recyclerViewVideos != null) {
             if (adapterVideos == null && videos != null) {
@@ -108,5 +124,13 @@ class VideoFragment : BaseViewFragment(), VideoMVP.View {
             }
         })
 
+    }
+
+    override fun showProgressBar() {
+        prg.visibility = View.VISIBLE
+    }
+
+    override fun hideProgressBar() {
+        prg.visibility = View.GONE
     }
 }

@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">OnlineVideo</string>
-    <string name="video">ویدئو</string>
-    <string name="gif">گیف</string>
-    <string name="me">من</string>
+    <string name="app_name">ExoPlayerSample</string>
+    <string name="video">Video</string>
+    <string name="gif">Gif</string>
+    <string name="me">Me</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fail_try_again">خطا، دوباره امتحان کنید</string>
+    <string name="fail_try_again">Failed, try again.</string>
 </resources>

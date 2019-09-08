@@ -2,6 +2,7 @@ package com.sadeghirad.onlinevideo.ui.main
 
 import android.view.MenuItem
 import com.sadeghirad.onlinevideo.R
+import com.sadeghirad.onlinevideo.constants.AppConstants
 import com.sadeghirad.onlinevideo.ui.base.IBaseView
 
 class MainPresenter : MainMVP.Presenter {
@@ -14,6 +15,8 @@ class MainPresenter : MainMVP.Presenter {
     }
 
     override fun handleBottomNavigationClick(menuItemId: MenuItem): Boolean {
+
+        AppConstants.isNavigatingBetweenFragments = true
 
         when (menuItemId.itemId) {
             R.id.bottom_navigation_video -> {
